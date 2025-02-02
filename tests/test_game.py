@@ -14,7 +14,7 @@ def test_health_check():
     """ヘルスチェックエンドポイントのテスト"""
     response = client.get("/health")
     assert response.status_code == 200
-    assert response.json() == {"status": "healthy", "version": "0.1.0"}
+    assert response.json() == {"status": "healthy", "version": "0.0.1"}
 
 def test_index_page():
     """インデックスページのテスト"""
