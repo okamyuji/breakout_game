@@ -31,8 +31,8 @@ def test_static_files():
     assert game_py.exists(), "game.py not found"
     
     # CSSファイルの存在チェック
-    css_dir = static_dir / "css"
-    assert css_dir.exists(), "css directory not found"
+    css_file = static_dir / "css" / "style.css"
+    assert css_file.exists(), "style.css not found"
 
 def test_template_files():
     """テンプレートファイルの存在チェック"""
@@ -57,6 +57,10 @@ def test_static_file_content():
     assert response.status_code == 200
     content = response.content.decode()
     assert "async def main():" in content, "game.py does not contain expected content"
+
+    css_response = client.get("/static/css/style.css")
+    assert css_response.status_code == 200
+    assert "canvas" in css_response.text
 
 # ゲームロジックのモック関数
 def mock_check_collision(ball, rect):
