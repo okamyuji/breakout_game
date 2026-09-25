@@ -10,15 +10,10 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v7
-        with:
-          python-version: '3.13'
-      - uses: astral-sh/setup-uv@v10.1.0
-      - name: Install dependencies
-        run: uv pip install --system -r requirements.txt
-      - name: Run tests
-        run: python -m pytest
+  ci:
+    uses: okamyuji/reusable-workflows/.github/workflows/python-ci.yml@v1
+  security:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: okamyuji/reusable-workflows/.github/workflows/security-scan.yml@v1
