@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   ci:
-    uses: okamyuji/reusable-workflows/.github/workflows/python-ci.yml@7a97be0a4edd690a80b04534bce3f9c87e8518b6
+    uses: okamyuji/reusable-workflows/.github/workflows/python-ci.yml@v1
   security:
     permissions:
       contents: read
